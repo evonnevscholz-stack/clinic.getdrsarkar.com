@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klinik Dr. Sarkar | Pelayanan Kesehatan Profesional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #0d6efd;
+            --secondary: #198754;
+            --accent: #ff6b35;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+        }
+
+        body {
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            background-color: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .logo-text h1 {
+            font-size: 24px;
+            color: var(--primary);
+        }
+
+        .logo-text p {
+            font-size: 14px;
+            color: var(--gray);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .cta-button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #0b5ed7;
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(13, 110, 253, 0.85), rgba(25, 135, 84, 0.85)), url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            background-color: rgba(13, 110, 253, 0.1);
+            color: var(--primary);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 36px;
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        /* Directory Section */
+        .directory {
+            padding: 80px 0;
+        }
+
+        .directory-nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .dir-btn {
+            background-color: white;
+            border: 2px solid #e9ecef;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .dir-btn.active, .dir-btn:hover {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .directory-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .dir-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .dir-card-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .dir-card-header h3 {
+            font-size: 22px;
+        }
+
+        .dir-card-body {
+            padding: 25px;
+        }
+
+        .dir-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .dir-item:last-child {
+            border-bottom: none;
+        }
+
+        .dir-item-title {
+            font-weight: 600;
+        }
+
+        .dir-item-value {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-img {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            font-size: 36px;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--gray);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background-color: var(--primary);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .cta-button.secondary {
+            background-color: white;
+            color: var(--primary);
+        }
+
+        .cta-button.secondary:hover {
+            background-color: #f8f9fa;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 25px;
+            color: white;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .contact-icon {
+            background-color: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #adb5bd;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .hero h2 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .directory-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h2 {
+                font-size: 30px;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+            
+            .feature-card {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-stethoscope"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>Dr. Sarkar Clinic</h1>
+                    <p>Pelayanan Kesehatan Terpercaya</p>
+                </div>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#features">Layanan</a></li>
+                    <li><a href="#directory">Direktori</a></li>
+                    <li><a href="#about">Tentang</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+            </nav>
+            
+            <button class="cta-button" onclick="scrollToContact()">Buat Janji</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>Kesehatan Anda Adalah Prioritas Kami</h2>
+            <p>Dr. Sarkar Clinic memberikan pelayanan kesehatan profesional dengan peralatan medis terkini dan tim dokter berpengalaman untuk solusi kesehatan terbaik bagi Anda dan keluarga.</p>
+            <button class="cta-button" onclick="scrollToContact()">
+                <i class="fas fa-calendar-check"></i> Buat Janji Konsultasi
+            </button>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Layanan Unggulan Klinik</h2>
+                <p>Kami menyediakan berbagai layanan kesehatan komprehensif untuk memenuhi kebutuhan medis Anda dengan standar tertinggi.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3>Konsultasi Dokter Umum</h3>
+                    <p>Konsultasi dengan dokter umum berpengalaman untuk diagnosis dan pengobatan penyakit umum dengan perhatian personal.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>Pemeriksaan Jantung</h3>
+                    <p>Pemeriksaan jantung lengkap termasuk EKG, tes treadmill, dan ekokardiografi untuk mendeteksi masalah kardiovaskular.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-vial"></i>
+                    </div>
+                    <h3>Laboratorium Lengkap</h3>
+                    <p>Fasilitas laboratorium lengkap dengan teknologi terkini untuk tes darah, urin, dan pemeriksaan medis lainnya.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Directory Section -->
+    <section class="directory" id="directory">
+        <div class="container">
+            <div class="section-title">
+                <h2>Direktori Layanan & Jadwal</h2>
+                <p>Temukan informasi lengkap tentang layanan, jadwal dokter, dan biaya konsultasi di klinik kami.</p>
+            </div>
+            
+            <div class="directory-nav">
+                <button class="dir-btn active" onclick="showDirectory('services')">Layanan</button>
+                <button class="dir-btn" onclick="showDirectory('doctors')">Dokter</button>
+                <button class="dir-btn" onclick="showDirectory('schedule')">Jadwal</button>
+                <button class="dir-btn" onclick="showDirectory('pricing')">Biaya</button>
+            </div>
+            
+            <div class="directory-content">
+                <!-- Services Directory -->
+                <div class="dir-card" id="services-dir">
+                    <div class="dir-card-header">
+                        <h3><i class="fas fa-concierge-bell"></i> Layanan Klinik</h3>
+                    </div>
+                    <div class="dir-card-body">
+                        <div class="dir-item">
+                            <div class="dir-item-title">Konsultasi Umum</div>
+                            <div class="dir-item-value">Tersedia</div>
+                        </div>
+                        <div class="dir-item">
+                            <div class="dir-item-title">Pemeriksaan Jantung</div>
+                            <div class="dir-item-value">Tersedia</div>
+                        </div>
+                        <div class="dir-item">
+                            <div class="dir-item-title">Tes Laboratorium</div>
+                            <div class="dir-item-value">Tersedia</div>
+                        </div>
+                        <div class="dir-item">
+                            <div class="dir-item-title">USG & Radiologi</div>
+                            <div class="dir-item-value">Tersedia</div>
+                        </div>
+                        <div class="dir-item">
+                            <div class="dir-item-title">Vaksinasi</div>
+                            <div class="dir-item-value">Tersedia</div>
+                        </div>
+                        <div class="dir-item">
+                            <div class="dir-item-title">Kesehatan Ibu & Anak</div>
+                            <div class="dir-item-value">Tersedia</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Doctors Directory -->
+                <div class="dir-card" id="doctors-dir" style="display: none;">
+                    <div class="dir-card-header">
+                        <h3><i class="fas fa-user-md"></i> Tim Dokter</h3>
+                    </div>
+                    <div class="dir-card-body">
+                        <div class="dir-item">
+                            <div class="dir-item-title">dr. Sarkar, Sp.JP</div>
+                            <div class="dir-item-value">Spesialis Jantung</div>
+                        </div>
+                        <div class="dir-item">
+                            <div class="dir-item-title">dr. Anisa Putri, M.Ked</div>
+                            <div class="dir-item-value">Dokter Umum</div>
+                        </div>
+                        <div class="dir-item">
+                            <div class="dir-item-title">dr. Budi Santoso, Sp.PD</div>
+                            <div class="dir-item-value">Spesialis Penyakit Dalam</div>
+                        </div>
+                        <div class="dir-item">
+                            <div class="dir-item-title">dr. Maya Sari, Sp.A</div>
+                            <div class="dir-item-value">Spesialis Anak</div>
+                        </div>
+                        <div class="dir-item">
+                            <div class="dir-item-title">dr. Rina Wijaya, Sp.OG</div>
+                            <div class="dir-item-value">Spesialis Kandungan</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Schedule Directory -->
+                <div class="dir-card" id="schedule-dir" style="display: none;">
+                    <div class="dir-card-header">
+                        <h3><i class="fas fa-calendar-alt"></i> Jadwal Praktik</h3>
+                    </div>
+                    <div class="dir-card-body">
+                        <div class="dir-item">
+                            <div class="dir-item-title">Senin - Jumat</div>
+                            <div class="dir-item-value">08:00 - 20:00</div>
+                        </div>
+                        <div class="dir-item">
+                            <div class="dir-item-title">Sabtu</div>
+                            <div class="dir-item-value">08:00 - 16:00</div>
+                        </div>
+                        <div class="dir-item">
+                            <div class="dir-item-title">Minggu</div>
+                            <div class="dir-item-value">09:00 - 14:00</div>
+                        </div>
+                        <div class="dir-item">
+                            <div class="dir-item-title">Praktik dr. Sarkar</div>
+                            <div class="dir-item-value">Senin, Rabu, Jumat</div>
+                        </div>
+                        <div class="dir-item">
+                            <div class="dir-item-title">Praktik Spesialis</div>
+                            <div class="dir-item-value">Lihat Jadwal</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pricing Directory -->
+                <div class="dir-card" id="pricing-dir" style="display: none;">
+                    <div class="dir-card-header">
+                        <h3><i class="fas fa-money-bill-wave"></i> Biaya Layanan</h3>
+                    </div>
+                    <div class="dir-card-body">
+                        <div class="dir-item">
+                            <div class="dir-item-title">Konsultasi Umum</div>
+                            <div class="dir-item-value">Rp 150.000</div>
+                        </div>
+                        <div class="dir-item">
+                            <div class="dir-item-title">Konsultasi Spesialis</div>
+                            <div class="dir-item-value">Rp 300.000</div>
+                        </div>
+                        <div class="dir-item">
+                            <div class="dir-item-title">Tes Darah Lengkap</div>
+                            <div class="dir-item-value">Rp 250.000</div>
+                        </div>
+                        <div class="dir-item">
+                            <div class="dir-item-title">EKG</div>
+                            <div class="dir-item-value">Rp 200.000</div>
+                        </div>
+                        <div class="dir-item">
+                            <div class="dir-item-title">USG Abdomen</div>
+                            <div class="dir-item-value">Rp 350.000</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Dr. Sarkar Clinic">
+                </div>
+                <div class="about-text">
+                    <h2>dr. Sarkar, Sp.JP - Dokter Spesialis Jantung</h2>
+                    <p>Dr. Sarkar adalah dokter spesialis jantung dan pembuluh darah dengan pengalaman lebih dari 15 tahun dalam menangani berbagai masalah kardiovaskular. Beliau menyelesaikan pendidikan spesialisnya di Universitas Indonesia dan telah menangani ribuan pasien dengan hasil yang memuaskan.</p>
+                    <p>Di klinik ini, Dr. Sarkar didukung oleh tim medis profesional yang siap memberikan pelayanan kesehatan terbaik dengan standar internasional. Kami percaya bahwa setiap pasien berhak mendapatkan perhatian personal dan perawatan yang komprehensif.</p>
+                    <p>Klinik Dr. Sarkar dilengkapi dengan peralatan medis terkini untuk diagnosis dan pengobatan yang akurat. Kami berkomitmen untuk memberikan solusi kesehatan terbaik bagi masyarakat.</p>
+                    <button class="cta-button" onclick="scrollToContact()">
+                        <i class="fas fa-phone-alt"></i> Hubungi Kami
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Siap Untuk Konsultasi Kesehatan?</h2>
+            <p>Jadwalkan kunjungan Anda hari ini dan dapatkan pelayanan kesehatan terbaik dari tim profesional kami. Kesehatan Anda adalah investasi terbesar.</p>
+            <button class="cta-button secondary" onclick="scrollToContact()">
+                <i class="fas fa-calendar-plus"></i> Buat Janji Online
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Dr. Sarkar Clinic</h3>
+                    <p>Klinik kesehatan profesional dengan layanan lengkap dan tim dokter berpengalaman. Kami berkomitmen memberikan pelayanan terbaik untuk kesehatan Anda.</p>
+                    <div class="social-links" style="margin-top: 20px; display: flex; gap: 15px;">
+                        <a href="#" style="color: white;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" style="color: white;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="color: white;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="color: white;"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Menu Cepat</h3>
+                    <ul>
+                        <li><a href="#home">Beranda</a></li>
+                        <li><a href="#features">Layanan</a></li>
+                        <li><a href="#directory">Direktori</a></li>
+                        <li><a href="#about">Tentang Kami</a></li>
+                        <li><a href="#contact">Kontak</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Kontak Kami</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <p>Jl. Kesehatan No. 123, Jakarta Pusat</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <p>(021) 1234-5678</p>
+                                <p>0812-3456-7890 (WhatsApp)</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p>info@drsarkarclinic.com</p>
+                                <p>appointment@drsarkarclinic.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Dr. Sarkar Clinic. Semua Hak Dilindungi.</p>
+                <p>Website oleh Tim Pengembangan Klinik Dr. Sarkar</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            mobileMenuBtn.innerHTML = mainNav.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Directory navigation
+        function showDirectory(category) {
+            // Hide all directory cards
+            document.getElementById('services-dir').style.display = 'none';
+            document.getElementById('doctors-dir').style.display = 'none';
+            document.getElementById('schedule-dir').style.display = 'none';
+            document.getElementById('pricing-dir').style.display = 'none';
+            
+            // Show selected directory card
+            document.getElementById(`${category}-dir`).style.display = 'block';
+            
+            // Update active button
+            const buttons = document.querySelectorAll('.dir-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            const activeBtn = Array.from(buttons).find(btn => 
+                btn.textContent.toLowerCase().includes(category)
+            );
+            
+            if (activeBtn) {
+                activeBtn.classList.add('active');
+            }
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (mainNav.classList.contains('active')) {
+                        mainNav.classList.remove('active');
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                }
+            });
+        });
+        
+        // Scroll to contact function
+        function scrollToContact() {
+            const contactSection = document.getElementById('contact');
+            window.scrollTo({
+                top: contactSection.offsetTop - 80,
+                behavior: 'smooth'
+            });
+        }
+        
+        // Simulate appointment booking
+        document.querySelectorAll('.cta-button').forEach(button => {
+            if (button.textContent.includes('Buat Janji')) {
+                button.addEventListener('click', () => {
+                    alert('Terima kasih! Anda akan diarahkan ke halaman pembuatan janji. Silakan pilih tanggal dan waktu yang tersedia.');
+                    // In a real implementation, this would open a booking form or page
+                });
+            }
+        });
+    </script>
+</body>
+</html>
